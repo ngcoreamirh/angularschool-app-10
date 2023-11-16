@@ -1,0 +1,50 @@
+<div class="panel-box-header">
+    <input *ngIf="isNotSelected || isOneSelected" [@panelInOut] type="text" placeholder="نام دانشجو را وارد کنید"
+        [(ngModel)]="student.name" [disabled]="isFormSubmited">
+
+    <button class="btn-blue" *ngIf="isOneSelected; else createMode" [@panelInOut] type="button"
+        (click)="onEditStudent()" title="ویرایش" [disabled]="isFormSubmited">ویرایش</button>
+    <ng-template #createMode>
+        <button class="btn-blue" *ngIf="isNotSelected" type="button" (click)="onAddStudent()"
+            [disabled]="isFormSubmited" title="افزودن">+</button>
+    </ng-template>
+    <div class="counter" *ngIf="isManySelected || isAllSelected" [@panelInOut]>
+        <button [@panelInOut] class="btn-red" type="button" (click)="onRemoveAllClick()" [disabled]="isFormSubmited"
+            title="حذف انتخاب شده ها">حذف {{ selectedStudents.length }} مورد</button>
+    </div>
+</div>
+
+<app-alert-message (isVisible)="onAlertMessageVisible($event)"></app-alert-message>
+
+<div class="panel-box-content">
+    <button [disabled]="studentList.length < 2" *ngIf="studentList.length != 0"
+        [class]="isAllSelected ? 'select-all-checkbox selected' : 'select-all-checkbox'" (click)="onSelectAllClick()">
+        انتخاب همه
+    </button>
+
+    <div class="content-item" *ngFor="let student of studentList; let i = index">
+        <div class="item-col">
+            <span class="title">نام:</span>
+            <span>{{ student.name }}</span>
+        </div>
+        <div class="item-col">
+            <button class="btn-remove" (click)="onRemoveStudent(student.ID)" title="حذف">
+                ❌
+            </button>
+
+            <div [class]="isStudentSelected(student) ? 'checkbox selected' : 'checkbox'"
+                (click)="onItemChange(student)">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h5 *ngIf="studentList.length == 0 && !isLoadDataFail">{{ AppConfig.STUDENT_LIST_EMPTY_MESSAGE }}</h5>
+        <h5 *ngIf="isLoadDataFail">{{ AppConfig.LOADING_DATA_FAIL_MESSAGE }}</h5>
+        <button *ngIf="isLoadDataFail" (click)="loadStudents()">{{ AppConfig.REFRESH_MESSAGE }}</button>
+    </div>
+
+    <app-background-blur *ngIf="isShowBlur"></app-background-blur>
+    <app-loading *ngIf="isShowLoading"></app-loading>
+</div>

@@ -1,0 +1,91 @@
+@import '/src/assets/styles/shared-components';
+
+.panel-box-header {
+    input[type="number"] {
+        width: 100px;
+    }
+
+    select {
+        flex-grow: 1;
+    }
+}
+
+.content-item {
+    .item-col {
+        &:nth-child(1) {
+            width: 29% !important;
+        }
+
+        &:nth-child(2) {
+            width: 29% !important;
+        }
+
+        &:nth-child(3) {
+            width: 18% !important;
+
+            .score {
+                display: inline-block;
+                border-radius: 12px;
+                padding: 4px 9px 3px 3px !important;
+                font-weight: bold;
+            }
+
+            .score.rejected {
+                background-color: #db6e6e;
+                color: black !important;
+            }
+
+            .score.passed {
+                background-color: #7fc05d;
+                color: white !important;
+            }
+
+            .score.gold {
+                background-color: #e4c22b;
+                color: white !important;
+            }
+
+            .icon {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {}
+
+@media screen and (max-width: 575px) {
+    .panel-box-content {
+        .content-item {
+            .item-col {
+                margin-bottom: 20px;
+                text-align: center;
+
+                .title {
+                    top: 0 !important;
+                }
+
+                &:nth-child(1) {
+                    width: 45% !important;
+                }
+
+                &:nth-child(2) {
+                    width: 45% !important;
+                }
+
+                &:nth-child(3) {
+                    width: 45% !important;
+                }
+
+                &:last-child {
+                    width: 45% !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<div class="alert-message" id="alert-message" [style]="'color:' + alertmessageColor">{{ alertMessage }}</div>
+
+<div id="progress-container" *ngIf="alertMessage !== ''">
+    <div id="progress"></div>
+</div>

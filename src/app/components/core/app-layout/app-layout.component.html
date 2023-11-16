@@ -1,0 +1,35 @@
+<header>
+    <div class="right">
+        <a href="https://angularschool.yek.link" class="btn-flip" data-back="یک لینک" data-front="صفحات مجموعه"
+            target="_blank"></a>
+        <span class="copyright">
+            &#169; 2023 | angularschool
+        </span>
+    </div>
+
+    <div class="center">
+        <div class="app-title">App-10</div>
+        <div class="description">پروژه ی ثبت نمره</div>
+    </div>
+
+    <div class="left">
+        <div class="logo"></div>
+    </div>
+</header>
+
+<main>
+    <div class="main-panel">
+        <div class="panel-title">{{panelTitle}}</div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="menus">
+            <a class="menu-item" [routerLink]="[ '/score-management' ]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact : true}">مدیریت نمره</a>
+            <a class="menu-item" [routerLink]="[ '/course-management' ]" routerLinkActive="active">مدیریت درس</a>
+            <a class="menu-item" [routerLink]="[ '/student-management' ]" routerLinkActive="active">مدیریت دانشجو</a>
+        </div>
+    </div>
+</main>
+
+<app-tips></app-tips>

@@ -1,0 +1,21 @@
+.alert-message {
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#progress-container {
+    height: 10px;
+    background-color: gainsboro;
+    direction: ltr;
+    margin: 4px;
+    border-radius: 10px;
+
+    #progress {
+        border-radius: 10px;
+        width: 0%;
+        height: 10px;
+        background: linear-gradient(to left, #63a1f2 20%, #780ac6 100%);
+    }
+}
